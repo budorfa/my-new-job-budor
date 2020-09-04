@@ -1,0 +1,734 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;/*لا تسمح لل padding  بتزويد مساحة العنصر بل ياخذ من المساحة المخصصة للعنصر */
+}
+h1 , h2 , h3 , h4 , h5 , h6 {
+   font-family: montserrat,sans-serif
+}
+button{
+    font-family: 'Roboto', sans-serif;
+}
+.pd-y{
+padding: 120px 0 ;
+}
+.section-header{
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+.section-header .section-title{
+    font-size: 35px;
+    text-transform: capitalize;
+      margin-bottom: 20px;
+  margin-bottom: 10px;
+
+
+
+}
+.section-header .line {
+    display: block;/* لان ال spin بالاصل هي inline*/
+    width: 60px;
+    height: 5px;
+    margin:  0 auto 70px auto;/*يوسطن تي عنصر له width*/
+    background-color: #6195ff;
+}
+.hover-opacity:hover{
+opacity : 0.8; /*درجة التاثير على الزر*/
+}
+.hover-opacity {
+    transition: opacity 0.5s; /*لجعل تاثير على الزر عند وضع المؤشر واضفنا opacity كي لا يحصل التاثيؤ على كل خواص الزر */
+}
+.ltr-effct, .tb-effect {
+    position: relative;
+}
+.ltr-effct:after , .tb-effect:after{
+    position: absolute;
+    content: "";
+    background-color: #111111;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;/*جعل الحركة خلف الكلام*/
+   /*طبقت الحركة في البظء على after لانه سياتيمن اليمين الى اليسار ببطء*/
+}
+.ltr-effct:after{
+    width: 0;
+     transition:width .5s;
+}
+.tb-effect:after {
+    height: 0;
+    transition: height .5s;
+}
+.ltr-effct:hover:after{
+    width: 100%;/*ي يعبا الشكل بشكل كامل*/
+
+}
+.tb-effect:hover:after{
+    height: 100%;
+}
+.header{
+    position: fixed;/*كي يتحول من block الى inline-block*/
+    width: 100%;/*لان fixedتجعل العنصر ينكمش*/
+z-index: 10;/*كي نجعله يظر في الامام */
+}
+.container{
+    width: 80%;
+    margin: auto;/*يكون الموقع بعيسد عن الحواف في المنتصف */
+   
+}
+.header .logo {
+    width: 40%;
+    float: left;/*لوضع العناصر جمب بعض*/
+ 
+}
+.header .logo img {
+    width: 20%;/*حجم الصورة في الوغو*/
+    margin-top: 15px;
+}
+.header .nav{
+     width: 60%;
+     float: left;
+     list-style: none;/*لازالة رمز الترتيب بجانب القوائم*/
+     text-align: right;/*كي نجعل قوائمها من اليمين*/
+}
+.header .nav > li {
+    
+    display: inline-block;/*وضع عناصر القوائم بجانب بعض */
+    text-align: right;
+
+
+}
+.header .nav  > li > a {
+    color: white;
+    text-decoration:none;/* ازالة الخط سفل القوائم */
+    display: block;/*سهولة للتطبيق اي كل عنصر ضمن li وهو عنصر وحيد وبالتالي ممكن اعطائه block*/
+    padding: 30px 15px;/* من الاعلى 30 ويمين وشمال 10 يبعد بين القوائم*/
+}
+.dropdown {
+    position: relative;
+}
+.dropdown-menu{
+    position: absolute;/*ليظهر العنصران فوق بعض*/
+    background: #6195ff;
+    width: 150px;
+    text-align: center;
+    left: -50;
+    top: 70;
+    opacity: 0;/*وضعناه كي يحجز مكان امام النظر المنظر عند وضع الماوس افضل */
+    visibility: hidden;/*مخفي حاليا*/
+    transition: opacity 0.5s; /*نضعه دائما في الاب للابن المؤثر عليه*/
+}
+.dropdown-menu a {
+    color: #fff;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+}
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;/* اظهره عند تمرير المؤشر*/
+
+}
+.header .nav > li > a:after ,.header .nav > li > a.active:after {
+    content: "";/*المحتوى فارغ انا سانشئه*/
+    display: block;  
+    height: 3px;
+    margin-top: 2px;
+    background-color: #6195ff;
+    transition: width 0.5s;/*الحركة */
+}
+.header .nav > li a:after{
+
+ width: 0;/*مختفي حاليا*/
+
+}
+.header .nav > li > a:hover:after {
+    width: 100%;/*عند وضع المؤشر اجعله يظهر*/
+}
+.header .nav > li > a.active:after{
+     width: 100%; /*دائما ثابت*/
+
+}
+.clear{
+    clear: both;/*حل مشكلة ال float*/
+}
+
+/*home section*/
+.home {
+    height: 100vh;/*لجعلها 100 من شاشة الرؤية ايا كان حجمها */
+    background-image: url(../images/background/background1.webp);/*وضع صورة خلفية*/
+    background-size: cover;/* تظهر الصورة ملائمة*/
+    position: relative;/*لتوضع صورة ضبابية فوق الصورة الخلفية استخدمنا positon*/
+}
+.home-content
+{/*hero image*/
+    position: absolute;/*توضع عنصر بالنسبة للاب*/
+    top: 50%;/*حركه 50%بالنسبة للاب*/
+    left: 50%;
+    width: 65%;
+    transform: translate(-50%,-50%);/*حركه بمقدار كي يتوسط الشاشة */
+    text-align: center;/*اي محتوى بداخل العنصر اجهله بالوسط*/
+}
+.overlay{
+    position: absolute;
+    width: 100%;/*خذ حجم 100%من حجم الاب*/
+    height: 100%;
+    top: 0;/*اجعله ملاصق للاعلى*/
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);/*وضع شفافية سوداء لون اسود 000ودرجة شفافية بين 0 و1 */
+}
+.home .title{
+    color:#fff;
+    font-size: 3.1rem;
+    text-transform: uppercase;/*اول حرف من كل كلمة كبير*/
+
+}
+.home-description{
+    color: #fff;
+    margin: 20px;
+    letter-spacing: 2px;/*المسافة بين الكلمات*/
+    line-height: 1.5;/*المسافة بين الاسطر*/
+}
+.home .btn {
+    min-width: 160px;/* يبدا عنده اصغر حجم*/
+    padding: 15px 0;
+    border-radius: 5px;/*الانحناء عند الحواف*/
+    border: 0;
+    cursor: pointer;/*ند تمرير المؤشريغير شكل الماوس*/
+    font-size: 18px;
+}
+.home .btn-start{
+    margin-right: 15px;/*للفصل بين الزرين نضعه باحد الزرين*/
+    background-color: #fff;
+}
+.home .btn-learn{
+   background-color: #6195ff;
+    color: #fff;
+}
+.about {
+
+}
+.about-content{
+
+}
+.about-item{
+    width: 30%;
+    float: left;
+    text-align: center;
+    border: 3px solid #e8e8e8;
+    padding: 50px 20px;
+}
+/*عنصر واحد اخذ كلاسين*/
+.about-item.mg{
+margin: 0 5%;/*وضع فاصل بين الصور*/
+}
+.about-item .icon {
+    color: #6195ff;
+    margin-bottom: 10px;
+}
+.about-item-title{
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    transition: color .5s;
+}
+.about-item:hover .about-item-title /*تحول العنوان للون الابييض عند التاشير*/{
+    color: #fff;
+}
+.about-item-desc{
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: #899999
+}
+.about-item-link{
+    color: #6195ff;
+    text-transform: capitalize;
+}
+.portfolio{
+    background-color: #f0f9f9;
+}
+.portfolio-content{
+    overflow: hidden;
+}
+.portfolio-item{
+    width:32%;
+    float: left;
+    margin-bottom: 25px;
+    position: relative;
+    padding: 20px;
+    
+}
+.portfolio-item .layer-content{
+    position: absolute;
+    top: 0;/*لتوضيعهم فوق العنصر */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0, 0, 0, 0.5); /*لجهلها شفافة*/
+    opacity: 0;
+    visibility: hidden;
+transition: opacity .5s;
+
+}
+
+.portfolio-item:hover .layer-content
+{
+    opacity: 1;
+    visibility: visible;
+}
+.layer-content .layer-info{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 60%;
+    transform: translate(-50%,-50%);
+text-align: center;
+
+}
+
+.layer-content .title {
+font-size: 20px;
+color: #fff;
+margin-bottom: 10PX;
+ position: relative;
+    top: 10px;
+    transition: top .5s opacity .5s;
+transition-delay: top .3s ;
+opacity: 0;
+}
+.layer-content .category {
+    color: #6195ff;
+    display: block;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    position: relative;
+    top: 10px;
+    transition: top .5s opacity .5s;
+  opacity: 0;
+transition-delay: top .2s  ;
+}
+.layer-content a {
+   color: #fff;
+    position: relative;
+    top: 10px;
+transition: top.5s opacity.5s;
+  transition-delay: top.3s ; 
+  opacity: 0;
+}
+.layer-content a i {
+    line-height: 40px;/*تتوضع في المنتصف*/
+    background-color: #6195ff;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+
+}
+.portfolio-item:hover .layer-content .title,
+.portfolio-item:hover .layer-content a,
+.portfolio-item:hover .layer-content .category
+{
+    top: 0;
+    opacity: 1;
+}
+
+.portfolio-item img{
+     display: inline-block;/*كي يتوضع جنب بعض */
+   
+ 
+    width: 100%;/*اجعل الصورة مية بالمية من حجم ابوها الي هو 30%كي لا تظهر كبيرة بحجمها الطبيعي*/
+}
+.portfolio-item.mg{
+    margin: 0 2%;
+}
+
+/*offer section*/
+
+.offer {
+
+}
+
+.offer-content {
+overflow: hidden;
+}
+
+.offer-item {
+width: 30%;
+float: left;
+margin-bottom: 20px;  
+border: 3px solid #e8e8e8;
+padding: 20px 15px 30px 70px;
+position: relative;
+}
+.offer-item.mg {
+    margin: 0 5%;
+}
+.offer-item .icon {
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    color: #6195ff;
+}
+.offer-item-title{
+    text-transform: capitalize;
+    margin-bottom: 15px;
+    transition: color .5s;
+}
+.offer-item-desc{
+    text-transform: capitalize;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    color: #899999;
+}
+.offer-item:hover .offer-item-title{
+    color: #fff;
+}
+/*service section*/
+.service{
+    background-color: #f0f9f9;
+}
+.service-item{
+    width: 50%;
+    float: left;
+}
+.service-item .section-header{
+    text-align: left;
+}
+.service-item .section-header .line{
+    margin: 0 0 40px 0;
+}
+.service-item-desc{
+    margin-right: 20px;
+    color: #899999;
+    line-height: 1.4;
+    font-size: 17px;
+    margin-bottom: 20px;
+
+}
+.service-list{
+    list-style: none;
+}
+.service-list li{
+    margin-bottom: 10px;
+    color: #899999;
+}
+.service-list li i {
+    border: 1px solid #6195ff;
+    color: #6195ff;
+    width: 30px;
+    height: 30px;
+    padding:7px;
+    border-radius: 50%;
+
+}
+.service-item-img img{
+    width: 100%;
+}
+.service-boilets{
+    list-style: none;
+    text-align: center
+}
+.service-boilets li{
+width: 10px;
+height: 10px;
+display: inline-block;
+background-color: #e8e8e8;
+margin: 10px 5px;
+border-radius: 50%;
+}
+.service-boilets li.active{
+    background-color: #6195ff;
+}
+.service-boilets li:hover{
+     background-color: #6195ff;
+}
+/*service section*/
+.numbers {
+    position: relative;
+     background-image: url(../images/background/background2.webp);
+     height: 300px;
+     background-size: cover;/*كي تعبا مكانها الصورة*/
+     background-attachment: fixed;/*كي يتحرك الصورة مع الصفحة*/
+}
+.numbers-items{
+    overflow: hidden;
+}
+.number-item{
+    width: 25%;
+    float: left;
+    text-align: center;
+   
+}
+.number-item .icon{
+   color: #6195ff;
+    margin-bottom: 15px;
+}
+.number-item-title{
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: #fff;
+    
+}
+.number-item-text{
+    color: #fff;
+}
+/*percing section*/
+.percing{
+
+}
+.percing-planes{
+    overflow: hidden;
+}
+.percing-item{
+    width: 30%;
+    float: left;
+    padding: 40px 15px;
+    border: 1px #e8e8e8;
+    text-align: center;
+}
+.percing-item.mg{
+    margin: 0 5%;
+}
+.percing-item-text{
+    text-transform: uppercase;
+    font-size: 17px;
+    color: #999;
+      transition: color .5s;
+        
+}
+.percing-item-permonth{
+    width: 130px;
+    height: 130px;
+    padding: 20px 0;
+    margin: 20px auto;
+    border: 2px solid #6195ff;
+    border-radius: 50%;
+    transition: color .5s;
+
+
+}
+.percing-item-permonth .dollar{
+    font-size: 40px;
+}
+.percing-item-permonth .month{
+text-transform: uppercase;
+font-weight: bold;
+font-size: 15px;
+}
+.percing-list{
+    list-style: none;
+}
+.percing-list li {
+    color: #999;
+    line-height: 1.8;
+    
+}
+.percing-item-perchase{
+    background: none;
+    border: 0;
+    display: block;
+    width: 140px;
+    border: 2px solid #6195ff;
+    padding: 10px;
+    margin: 15 auto 0 auto;
+    color: #6195ff
+
+}
+.percing-item:hover .percing-item-permonth{
+    color: #fff;
+}
+.percing-item:hover .percing-item-text{
+    color: #6195ff;
+}
+/*testimanual-section*/
+.testimanual{
+    position: relative;
+     background-image: url(../images/background/background3.webp);
+     background-attachment: fixed;
+     height: 400px;
+
+
+}
+.testimanual-content{
+    overflow: hidden;
+    padding: 120px 0;
+    width: 80%;
+    margin: auto;
+}
+.testimanual-item{
+    width: 50%;
+    float: left;
+    color: #fff;
+}
+.testimanual-item .testimanual-toplaer{
+    padding: 10px 2px 40px 100px;
+    position: relative;
+
+}
+.testimanual-item .testimanual-toplaer img{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    border-radius: 50%;
+
+}
+.testimanual-item .testimanual-toplaer h3{
+    margin: 5px 0 ;
+
+}
+.testimanual-item .testimanual-toplaer span{
+    color: #6195ff;
+}
+.testimanual-desc{
+    line-height: 1.5;
+    font-size: 17px;
+
+}
+.team{
+
+}
+.team-content{
+    overflow: hidden;
+}
+.team-item{
+    width: 30%;
+    float: left;
+    background: #e8e8e8;
+    padding: 40px 20px;
+    text-align: center;
+
+}
+.team-item.mg{
+    margin: 0 5%;
+}
+.team-item .team-image{
+    width: 90%;
+    margin: auto;
+    position: relative;
+}
+.team-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+}
+.team-overlay a{
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: #6195ff;
+    color: #fff;
+    margin-left: auto;
+}
+.team-overlay a i{
+    line-height: 40px;
+}
+.team-item .team-image img {
+    width: 100%;
+}
+.team-item .team-info-title{
+    color: #222;
+    margin: 20px 0;
+transition: color .5s;
+}
+.team-item .team-info-text{
+    color: #999;
+    text-transform: uppercase;
+    font-size: 14px;
+   transition: color .5; 
+}
+.team-item:hover .team-overlay{
+    visibility: visible;
+    opacity: 1;
+}
+.team-item.tb-effect{
+    z-index: 1;
+}
+.team-item:hover .team-info-title{
+    color: #fff;
+}
+.team-item:hover .team-info-text{
+    color: #6195ff;
+}
+.blog{
+    background-color: #e8e8e8;
+}
+.blog-content{
+    overflow: hidden;
+}
+.blog-item{
+    width: 30%;
+    float: left;
+    background: #fff;
+}
+.blog-item.mg{
+    margin: 0 5%;
+}
+.blog-item-image img{
+    width: 100%;
+}
+.blog-info{
+    padding: 20px;
+}
+.blog-list{
+    list-style: none;
+    margin: 10px 0;
+}
+.blog-list li{
+    display: inline-block;
+    margin: 0 5px;
+}
+.blog-list li i{
+    color: #6195ff;
+}
+.blog-title{
+    font-weight: bold;
+    margin: 20px 0;
+}
+.blog-desc{
+    color: #999;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+.blog-link{
+    color: #6195ff;
+}
+.footer{
+    background: #1c1d23;
+    text-align: center;
+    padding: 60px 0;
+}
+.footer-links{
+list-style: none;
+margin: 20px 0;
+}
+.footer-links li{
+   display: inline-block;
+}
+.footer-links li a{
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: #6195ff;
+    color: #fff;
+    margin: 0 5px;
+    border-radius: 50%;
+
+}
+.footer-links li a i{
+line-height: 50px;
+}
+.footer .copy-right{
+    color: #999;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+.body {
+    font-family: 'Roboto', sans-serif;
+       
+}
